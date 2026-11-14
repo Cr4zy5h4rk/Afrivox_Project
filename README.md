@@ -7,6 +7,46 @@ Projet présenté au concours **CADEV 2026** (Systalink). Les contributeurs enre
 🌐 **Démo en ligne** : https://afrivox.duckdns.org
 🚀 **Démarrage rapide** : https://afrivox.duckdns.org/quickstart
 
+
+## 🔐 Comptes de démonstration – Jury
+
+Les comptes suivants permettent au jury de tester les différentes fonctionnalités de la plateforme.
+
+| Rôle | Login | Mot de passe |
+|---|---|---|
+| Contributeur | `jury_contrib` | `ZXJqHVYr4ugpaj` |
+| Développeur | `jury_dev` | `dKD1FpNJZt220i` |
+| Administrateur | `jury_admin` | `P2kx2N9HZTSK51` |
+
+### 👤 Fonctionnalités par rôle
+
+#### 1. Contributeur (`jury_contrib`)
+- Enregistrer des phrases.
+- Valider des enregistrements.
+- Consulter ses crédits.
+- Aucune limite de 10 envois (compte hors période d'essai).
+- Compléter le questionnaire de profil obligatoire avant tout enregistrement : âge, genre, pays et région.
+- La validation des enregistrements nécessite une qualification préalable, qui doit être approuvée par l'administrateur.
+
+#### 2. Développeur (`jury_dev`)
+- Parcourir le catalogue de datasets.
+- Acheter un dataset (paiement simulé).
+- Publier un modèle.
+- Soumettre des prédictions au classement.
+- Créer des clés API.
+- L'accès à l'espace contributeur est volontairement interdit (HTTP 403).
+
+#### 3. Administrateur (`jury_admin`)
+- Administrer les utilisateurs et les campagnes.
+- Gérer les datasets, les qualifications et les crédits.
+- Effectuer le contrôle qualité.
+- Désactiver des comptes.
+- Publier ou retirer des versions.
+- Accéder à l'ensemble des fonctionnalités d'administration.
+
+> **Note :** Ces identifiants sont fournis exclusivement pour les tests et la démonstration par le jury. 
+
+
 ---
 
 ## Dépôts du projet
