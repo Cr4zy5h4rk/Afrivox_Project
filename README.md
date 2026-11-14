@@ -21,8 +21,8 @@ Ce dépôt est le point d'entrée. Le code est réparti en deux dépôts.
 Les deux dépôts se clonent côte à côte :
 
 ```bash
-git clone <URL_BACKEND>  AfriVox
-git clone <URL_FRONTEND> Afrivox_Frontend
+git clone https://github.com/Cr4zy5h4rk/AfriVox  : Backend
+git clone https://github.com/Cr4zy5h4rk/Afrivox_Frontend : Frontend
 ```
 
 ---
@@ -161,6 +161,23 @@ Campagne (liste de phrases)
 ```
 
 Déploiement : un seul serveur cloud Datacloud à Dakar, avec Docker Compose (API, PostgreSQL, nginx, certbot).
+
+---
+
+## Base de données
+
+PostgreSQL 18, exécuté dans Docker ; le schéma est géré par Liquibase (migrations versionnées, appliquées au démarrage de l'API).
+
+| | Dev (`src/main/docker/postgresql.yml`) | Prod (`deploy/docker-compose.yml`) |
+|---|---|---|
+| Accès | `127.0.0.1:5432` uniquement | aucun port publié, réseau interne Docker |
+| Authentification | `trust` (sans mot de passe, local seulement) | mot de passe dans `.env`, jamais commité |
+| Persistance | aucune par défaut | volume nommé `dbdata` |
+
+- Démarrer la base seule en dev : `docker compose -f src/main/docker/postgresql.yml up -d`
+- Sauvegarde : `deploy/backup.sh` (dump compressé, 7 conservés). **À copier hors du serveur.**
+- Restauration : `gunzip -c db-<date>.sql.gz | docker compose exec -T db psql -U afrivox -d afrivox`
+- Les audios et archives de datasets ne sont pas en base : ils sont sur les volumes `audio` et `datasets`.
 
 ---
 
